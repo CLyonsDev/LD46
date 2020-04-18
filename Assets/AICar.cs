@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class AICar : MonoBehaviour
 {
-    private bool isActive = true;
-
     public float speed = 10f;
-    public float EngineStrength;
+    //public float EngineStrength;
     private Rigidbody rb;
 
     void Awake()
@@ -17,11 +15,8 @@ public class AICar : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(isActive)
-        {
-            Vector3 targetVec = new Vector3(transform.forward.x, 0, transform.forward.y);
-            rb.AddForce(targetVec * speed * EngineStrength, ForceMode.Force);
-        }
+        Vector3 targetVec = new Vector3(transform.forward.x, 0, transform.forward.z);
+        rb.AddForce(targetVec * speed, ForceMode.Force);
     }
 
     public void ActivateAI()

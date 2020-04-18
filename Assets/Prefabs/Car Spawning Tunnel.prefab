@@ -291,7 +291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5018743714711020332}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.5, y: -5.25, z: -1}
+  m_LocalPosition: {x: -2.5, y: -4.85, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5018743713865709740}
@@ -309,6 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48de747cb8bd88e41bdbba127753095f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 250
+  MaxSpeed: 350
   MinSpawnDelay: 5
   MaxSpawnDelay: 10
   AICarPrefabs:
@@ -525,7 +527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5018743715003362375}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -5.5, y: -5.25, z: -1}
+  m_LocalPosition: {x: -5.5, y: -4.85, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5018743713865709740}
@@ -543,6 +545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48de747cb8bd88e41bdbba127753095f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinSpeed: 250
+  MaxSpeed: 350
   MinSpawnDelay: 5
   MaxSpawnDelay: 10
   AICarPrefabs:

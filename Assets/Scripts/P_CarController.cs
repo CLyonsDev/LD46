@@ -24,6 +24,13 @@ public class P_CarController : MonoBehaviour
     private float motor;
     private float steering;
 
+    public Transform CenterOfMassTransform;
+
+    private void Start()
+    {
+        GetComponent<Rigidbody>().centerOfMass = CenterOfMassTransform.localPosition;
+    }
+
     void FixedUpdate()
     {
         if(!isBraking)

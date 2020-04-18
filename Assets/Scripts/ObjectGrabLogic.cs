@@ -23,7 +23,7 @@ public class ObjectGrabLogic : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.parent.CompareTag("Pickup"))
+        if(other.transform.root.CompareTag("Pickup"))
             pickupCandidate = other.transform.root;
     }
 
@@ -57,15 +57,7 @@ public class ObjectGrabLogic : MonoBehaviour
         if (grabbedObject != null)
         {
             Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
-            //rb.useGravity = true;
-            //grabbedObject.gameObject.AddComponent<Rigidbody>();
-            //grabbedObject.SetParent(null);
             grabbedObject.GetComponent<PhysicsObject>().Detatch();
-            //Vector3 newVelocity = new Vector3(carRB.velocity.x, 0, carRB.velocity.z);
-            //grabbedObject.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
-            //grabbedObject.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-            //rb.AddForce((newVelocity / 12) + (-vel.vel * 1f), ForceMode.VelocityChange);
-            //rb.AddForce(-vel.vel * 1.5f, ForceMode.Impulse);
             grabbedObject = null;
         }
     }
