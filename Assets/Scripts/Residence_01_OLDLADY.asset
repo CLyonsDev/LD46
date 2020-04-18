@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Residence_01_OLDLADY
   m_EditorClassIdentifier: 
   IsComplete: 0
+  InitialValue: 0
+  ObjectiveMarkerLocation: {x: 4.05, y: 0, z: -185.25}
+  ReturnLocation: {x: -20.25, y: 0, z: -5.75}

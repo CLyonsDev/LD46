@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a7091bcb8551924aad862f8f58e8322, type: 3}
-  m_Name: pHPCurrent
+  m_Script: {fileID: 11500000, guid: 82668b498235ab5489230ba027846ddd, type: 3}
+  m_Name: Current Destination
   m_EditorClassIdentifier: 
-  Value: 0
-  Description: The player's current HP.
+  Value: {x: 0, y: 0, z: 0}
+  Description: Where's our current delivery waypoint?

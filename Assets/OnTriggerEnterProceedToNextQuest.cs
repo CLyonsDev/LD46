@@ -9,7 +9,7 @@ public class OnTriggerEnterProceedToNextQuest : MonoBehaviour
         Debug.Log(other.transform.name);
         if (other.transform.root.GetComponent<QuestManager>().CurrentMission.IsComplete)
         {
-            other.transform.root.GetComponent<QuestManager>().NextMission();
+            other.GetComponentInParent<QuestManager>().NextMission();
             Debug.Log("Good job! Next delivery.");
         }
     }

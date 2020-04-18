@@ -12,6 +12,15 @@ public class ObjectGrabLogic : MonoBehaviour
 
     public Rigidbody carRB;
 
+    private VelocityTracker vel;
+
+    public float HealthRestoredOnSqueeze = 15;
+
+    private void Awake()
+    {
+        vel = GetComponentInParent<VelocityTracker>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.parent.CompareTag("Pickup"))
@@ -53,8 +62,20 @@ public class ObjectGrabLogic : MonoBehaviour
             Vector3 newVelocity = new Vector3(carRB.velocity.x, 0, carRB.velocity.z);
             grabbedObject.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
             grabbedObject.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-            grabbedObject.GetComponent<Rigidbody>().AddForce(newVelocity, ForceMode.VelocityChange);
+            grabbedObject.GetComponent<Rigidbody>().AddForce((newVelocity / 12) + -vel.vel, ForceMode.VelocityChange);
             grabbedObject = null;
+        }
+    }
+
+    public void Squeeze()
+    {
+        if(grabbedObject != null)
+        {
+            if(grabbedObject.GetComponent<HeartHealth>() != null)
+            {
+                grabbedObject.GetComponent<HeartHealth>().AddHealth(HealthRestoredOnSqueeze);
+                // TODO: Cooldown between squeezes (have to do it multiple times)
+            }
         }
     }
 }

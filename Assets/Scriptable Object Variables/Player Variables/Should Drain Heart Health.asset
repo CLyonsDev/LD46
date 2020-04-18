@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888b219757fce514088e0246a2d940f9, type: 3}
-  m_Name: Residence_03_HOSPITAL
+  m_Script: {fileID: 11500000, guid: 6ad8e51d3c570f44abf32888f0110ee2, type: 3}
+  m_Name: Should Drain Heart Health
   m_EditorClassIdentifier: 
-  IsComplete: 0
-  InitialValue: 0
-  ObjectiveMarkerLocation: {x: -53.95, y: 0, z: -133.75}
-  ReturnLocation: {x: -53.95, y: 0, z: -133.75}
+  Value: 0
+  Description: Should we drain the heart's health?

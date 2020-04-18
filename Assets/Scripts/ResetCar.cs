@@ -13,13 +13,18 @@ public class ResetCar : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Start()
+    {
+        Debug.LogError("ResetCar should teleport the player back to the pizza shop parking lot (with all car decorations too)");
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.y, 0));
-            rb.MovePosition(Vector3.up * RaiseDistance);
+            rb.MovePosition(rb.position + (Vector3.up * RaiseDistance));
         }
     }
 }

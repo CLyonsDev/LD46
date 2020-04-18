@@ -8,6 +8,9 @@ public class DeliveryMission : ScriptableObject
     public bool IsComplete = false;
     public bool InitialValue = false;
 
+    public Vector3 ObjectiveMarkerLocation;
+    public Vector3 ReturnLocation;
+
     public void Init()
     {
         IsComplete = InitialValue;

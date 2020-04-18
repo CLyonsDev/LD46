@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class VelocityTracker : MonoBehaviour
 {
-    private Vector3 prevPosition;
-    public Vector3 velocity;
+    public Vector3 vel;
+    private Vector3 prevPos;
 
-    private void Start()
+    void Awake()
     {
-        StartCoroutine(CalcVelocity());
+        prevPos = transform.position;
     }
 
-    private IEnumerator CalcVelocity()
+    void FixedUpdate()
     {
-        while(true)
-        {
-            prevPosition = transform.position;
-            yield return new WaitForEndOfFrame();
-            velocity = (prevPosition - transform.position) / Time.deltaTime;
-        }
+        vel = (prevPos - transform.position) / Time.fixedDeltaTime;
+        prevPos = transform.position;
     }
 }

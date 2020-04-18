@@ -50,6 +50,11 @@ public class HandMovement : MonoBehaviour
         {
             logic.Release();
         }
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            logic.Squeeze();
+        }
     }
 
     // Update is called once per frame
