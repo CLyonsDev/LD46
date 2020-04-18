@@ -6,6 +6,7 @@ public class PhysicsObject : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform parentTransform;
+    private float lerpRate = 25f;
 
     // Start is called before the first frame update
     void Awake()
@@ -20,20 +21,21 @@ public class PhysicsObject : MonoBehaviour
         {
             //transform.position = parentTransform.position;
             rb.MovePosition(parentTransform.position);
+            //rb.position = Vector3.Lerp(transform.position, parentTransform.position, lerpRate * Time.fixedDeltaTime);
         }
     }
 
     public void AttachToTransform(Transform p)
     {
         rb.useGravity = false;
-        rb.isKinematic = true;
+        //rb.isKinematic = true;
         parentTransform = p;
     }
 
     public void Detatch()
     {
         rb.useGravity = true;
-        rb.isKinematic = false;
+        //rb.isKinematic = false;
         parentTransform = null;
     }
 }

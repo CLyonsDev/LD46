@@ -14,7 +14,9 @@ public class HandMovement : MonoBehaviour
     //private Rigidbody rb;
     private bool MoveVertical;
 
+    [SerializeField]
     private Vector3 direction;
+    [SerializeField]
     private Vector2 mousePos;
 
     private ObjectGrabLogic logic;
@@ -75,14 +77,18 @@ public class HandMovement : MonoBehaviour
 
         //rb.MovePosition(rb.position + direction * HandLerpSpeed * Time.fixedDeltaTime);
         //rb.transform.Translate(direction * HandLerpSpeed * Time.fixedDeltaTime, Space.Self);
-        Vector3 finalDest = transform.localPosition + direction;
+        Vector3 right = transform.InverseTransformDirection(transform.right * direction.x);
+        Vector3 forward = transform.InverseTransformDirection(transform.forward * direction.z);
+        Vector3 up = transform.InverseTransformDirection(transform.up * direction.y);
+
+        Vector3 finalDest = transform.localPosition + (right + forward + up);
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, finalDest, HandLerpSpeed * Time.fixedDeltaTime);
-
+        
+        //TODO: REWRITE
         transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, HorizontalOffsetClamp.x, HorizontalOffsetClamp.y),
             Mathf.Clamp(transform.localPosition.y, VerticalOffsetClamp.x, VerticalOffsetClamp.y),
             Mathf.Clamp(transform.localPosition.z, ForwardBackClamp.x, ForwardBackClamp.y)
             );
-        //transform.localPosition = 
     }
 }

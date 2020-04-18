@@ -58,6 +58,7 @@ public class ObjectGrabLogic : MonoBehaviour
         {
             Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
             grabbedObject.GetComponent<PhysicsObject>().Detatch();
+            rb.AddForce(-vel.vel * 1.5f, ForceMode.Impulse);
             grabbedObject = null;
         }
     }
