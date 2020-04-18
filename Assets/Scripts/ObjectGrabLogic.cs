@@ -46,8 +46,9 @@ public class ObjectGrabLogic : MonoBehaviour
             grabbedObject = pickupCandidate;
             //Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
             //rb.useGravity = false;
-            Destroy(grabbedObject.GetComponent<Rigidbody>());
-            grabbedObject.SetParent(this.transform.parent);
+            //Destroy(grabbedObject.GetComponent<Rigidbody>());
+            //grabbedObject.SetParent(this.transform.parent);
+            grabbedObject.GetComponent<PhysicsObject>().AttachToTransform(this.transform);
         }
     }
 
@@ -55,14 +56,16 @@ public class ObjectGrabLogic : MonoBehaviour
     {
         if (grabbedObject != null)
         {
-            //Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
+            Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
             //rb.useGravity = true;
-            grabbedObject.gameObject.AddComponent<Rigidbody>();
-            grabbedObject.SetParent(null);
-            Vector3 newVelocity = new Vector3(carRB.velocity.x, 0, carRB.velocity.z);
-            grabbedObject.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
-            grabbedObject.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-            grabbedObject.GetComponent<Rigidbody>().AddForce((newVelocity / 12) + -vel.vel, ForceMode.VelocityChange);
+            //grabbedObject.gameObject.AddComponent<Rigidbody>();
+            //grabbedObject.SetParent(null);
+            grabbedObject.GetComponent<PhysicsObject>().Detatch();
+            //Vector3 newVelocity = new Vector3(carRB.velocity.x, 0, carRB.velocity.z);
+            //grabbedObject.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
+            //grabbedObject.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+            //rb.AddForce((newVelocity / 12) + (-vel.vel * 1f), ForceMode.VelocityChange);
+            //rb.AddForce(-vel.vel * 1.5f, ForceMode.Impulse);
             grabbedObject = null;
         }
     }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HandMovement : MonoBehaviour
 {
-    private float HandLerpSpeed = 1f;
+    [SerializeField]
+    private float HandLerpSpeed = 3f;
 
     public Vector2 HorizontalOffsetClamp;
     public Vector2 VerticalOffsetClamp;

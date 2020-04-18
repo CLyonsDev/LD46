@@ -6,7 +6,7 @@ public class OnTriggerEnterProceedToNextQuest : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.transform.name);
+        //Debug.Log(other.transform.name);
         if (other.transform.root.GetComponent<QuestManager>().CurrentMission.IsComplete)
         {
             other.GetComponentInParent<QuestManager>().NextMission();

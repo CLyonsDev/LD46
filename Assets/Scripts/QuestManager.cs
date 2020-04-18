@@ -10,6 +10,9 @@ public class QuestManager : MonoBehaviour
 
     public Vector3Reference MarkerReference;
 
+    public GameObject ParticleMarkerPrefab;
+    private GameObject activeMarker;
+
     private void Start()
     {
         foreach (DeliveryMission mission in AllMissions)
@@ -20,11 +23,23 @@ public class QuestManager : MonoBehaviour
         CurrentMission = AllMissions[0];
 
         MarkerReference.Value = CurrentMission.ObjectiveMarkerLocation;
+        SpawnMarkerAtVec3(CurrentMission.ObjectiveMarkerLocation);
     }
 
     public void NextMission()
     {
         CurrentMission = AllMissions[AllMissions.IndexOf(CurrentMission) + 1];
         MarkerReference.Value = CurrentMission.ObjectiveMarkerLocation;
+        SpawnMarkerAtVec3(CurrentMission.ObjectiveMarkerLocation);
+    }
+
+    public void SpawnMarkerAtVec3(Vector3 pos)
+    {
+        if(activeMarker != null)
+        {
+            Destroy(activeMarker.gameObject);
+        }
+
+        activeMarker = (GameObject)Instantiate(ParticleMarkerPrefab, CurrentMission.ObjectiveMarkerLocation, Quaternion.identity);
     }
 }
