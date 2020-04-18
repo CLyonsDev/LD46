@@ -17,11 +17,25 @@ public class P_CarController : MonoBehaviour
     public List<AxleInfo> axleList; // Information about each axle
     public float maxMotorTorque;
     public float maxSteeringAngle;
+    public float brakeTorque;
+
+    private bool isBraking = false;
+
+    private float motor;
+    private float steering;
 
     void FixedUpdate()
     {
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+        if(!isBraking)
+        {
+            motor = maxMotorTorque * Input.GetAxis("Vertical");
+        }
+        else
+        {
+            motor = 0;
+        }
+
+        steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
         foreach (AxleInfo axle in axleList)
         {
@@ -34,6 +48,29 @@ public class P_CarController : MonoBehaviour
             {
                 axle.leftWheel.motorTorque = motor;
                 axle.rightWheel.motorTorque = motor;
+            }
+        }
+
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            foreach (AxleInfo axle in axleList)
+            {
+                if (axle.Motor == true)
+                {
+                    axle.leftWheel.brakeTorque = brakeTorque;
+                    axle.rightWheel.brakeTorque = brakeTorque;
+                }
+            }
+        }
+        else
+        {
+            foreach (AxleInfo axle in axleList)
+            {
+                if (axle.Motor == true)
+                {
+                    axle.leftWheel.brakeTorque = 0;
+                    axle.rightWheel.brakeTorque = 0;
+                }
             }
         }
     }
