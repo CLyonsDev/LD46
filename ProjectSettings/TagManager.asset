@@ -8,6 +8,7 @@ TagManager:
   - Car
   - Heart
   - Pizza Box
+  - AI Car
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - PlayerCar
   - Hand
   - Pickup
-  - 
-  - 
+  - Tunnel
+  - AI Car
   - 
   - 
   - 

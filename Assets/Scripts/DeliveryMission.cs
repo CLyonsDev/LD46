@@ -12,6 +12,10 @@ public class DeliveryMission : ScriptableObject
     public Vector3 ObjectiveMarkerLocation;
     public Vector3 ReturnLocation;
 
+    public AudioClip MissionAcquiredClip;
+    public AudioClip InZoneClip;
+    public AudioClip PizzaDeliveredClip;
+
     public void Init()
     {
         IsComplete = InitialValue;
