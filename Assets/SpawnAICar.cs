@@ -33,13 +33,15 @@ public class SpawnAICar : MonoBehaviour
             if(AiCar != null)
             {
                 Rigidbody rb = AiCar.GetComponent<Rigidbody>();
-                AiCar.SetActive(true);
                 rb.velocity = Vector3.zero;
+                AiCar.SetActive(true);
                 rb.MovePosition(this.transform.position);
                 rb.MoveRotation(this.transform.rotation);
                 //AiCar.transform.position = this.transform.position;
                 //AiCar.transform.rotation = this.transform.rotation;
                 AiCar.GetComponent<AICar>().speed = Random.Range(MinSpeed, MaxSpeed);
+                AiCar.GetComponent<RandomizeCarPaintColor>().RandomizePaintColor();
+                AiCar.GetComponent<AICar>().ActivateAI();
             }
         }
     }
