@@ -9,6 +9,7 @@ TagManager:
   - Heart
   - Pizza Box
   - AI Car
+  - AI Pedestrian
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Prop Wall
   - Pizza Box
   - Pizza Wall
-  - 
+  - AI Pedestrian
   - 
   - 
   - 

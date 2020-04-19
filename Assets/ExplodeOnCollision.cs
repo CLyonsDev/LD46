@@ -17,7 +17,7 @@ public class ExplodeOnCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if((collision.transform.root.CompareTag("AI Car") || collision.transform.root.CompareTag("Player")) && !hasExploded)
+        if((collision.transform.root.CompareTag("AI Car") || collision.transform.root.CompareTag("Player") || collision.transform.root.CompareTag("AI Pedestrian")) && !hasExploded)
         {
             ExplodeCar();
             hasExploded = true;
