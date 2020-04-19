@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplodeOnCollision : MonoBehaviour
 {
-    private bool hasExploded = false;
+    public bool hasExploded = false;
 
     public AudioClip[] explosionClips;
     private AudioSource source;
@@ -27,8 +27,14 @@ public class ExplodeOnCollision : MonoBehaviour
     public void ExplodeCar()
     {
         source.pitch = Random.Range(0.65f, 1f);
-        source.PlayOneShot(explosionClips[Random.Range(0, explosionClips.Length)], 0.25f);
+        source.PlayOneShot(explosionClips[Random.Range(0, explosionClips.Length)], 0.015f);
         GetComponent<AICar>().DeactivateAI();
         Instantiate(ExplosionParticleEffect, transform.position, Quaternion.identity);
+
+        Color32 black = new Color32(0, 0, 0, 255);
+        foreach (Renderer r in GetComponentsInChildren<Renderer>())
+        {
+            r.material.color = black;
+        }
     }
 }

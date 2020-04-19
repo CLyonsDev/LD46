@@ -26,13 +26,23 @@ public class P_CarController : MonoBehaviour
 
     public Transform CenterOfMassTransform;
 
+    public bool CanDrive = false;
+
     private void Start()
     {
         GetComponent<Rigidbody>().centerOfMass = CenterOfMassTransform.localPosition;
     }
 
+    public void SetCanDrive(bool value)
+    {
+        CanDrive = value;
+    }
+
     void FixedUpdate()
     {
+        if (!CanDrive)
+            return;
+
         if(!isBraking)
         {
             motor = maxMotorTorque * Input.GetAxis("Vertical");

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888b219757fce514088e0246a2d940f9, type: 3}
+  m_Name: Residence_01_OLDLADY
+  m_EditorClassIdentifier: 
+  IsInDeliveryZone: 0
+  IsComplete: 1
+  InitialValue: 0
+  ObjectiveMarkerLocation: {x: 4.05, y: 0, z: -185.25}
+  ReturnLocation: {x: -20.25, y: 0, z: -5.75}
+  MissionAcquiredClip: {fileID: 0}
+  InZoneClip: {fileID: 8300000, guid: 92c05da2698d360439bce0c4c7b535fc, type: 3}
+  PizzaDeliveredClip: {fileID: 8300000, guid: 2ab1843e7602a25419cda8dab901fb36, type: 3}
+  Notifications:
+  - {fileID: 11400000, guid: 5401f7cf62d1e2f418da9d1fc238379d, type: 2}
+  - {fileID: 11400000, guid: a5485d88d8653c94ba08f95dc8047f70, type: 2}
+  - {fileID: 11400000, guid: 0f6fe85991235114f8800b770472b040, type: 2}
+  - {fileID: 11400000, guid: 71e6e74220e7ac149af8d9956e1ce7ed, type: 2}
+  - {fileID: 11400000, guid: 2ad6b68bfea6f224abf1ffd2c53ba5f4, type: 2}

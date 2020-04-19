@@ -16,14 +16,22 @@ public class DeliveryMission : ScriptableObject
     public AudioClip InZoneClip;
     public AudioClip PizzaDeliveredClip;
 
+    public NotificationObject[] Notifications;
+
     public void Init()
     {
         IsComplete = InitialValue;
         IsInDeliveryZone = InitialValue;
     }
 
+    public void StartQuest()
+    {
+
+    }
+
     public void CompleteQuest()
     {
         IsComplete = true;
+        AudioSource.PlayClipAtPoint(PizzaDeliveredClip, ObjectiveMarkerLocation, 2.5f);
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class OnTriggerEnterCompletePizzaQuest : MonoBehaviour
 {
     public DeliveryMission LinkedMission;
+    private bool hasPlayedEnterClip = false;
+    public AudioSource source;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +22,12 @@ public class OnTriggerEnterCompletePizzaQuest : MonoBehaviour
                 //other.GetComponentInParent<QuestManager>().SpawnMarkerAtVec3(LinkedMission.ReturnLocation);
                 LinkedMission.IsInDeliveryZone = true;
                 Debug.Log("Is in delivery zone!");
+
+                if(hasPlayedEnterClip == false)
+                {
+                    source.PlayOneShot(LinkedMission.InZoneClip, 0.5f);
+                    hasPlayedEnterClip = true;
+                }
             }
         }
     }

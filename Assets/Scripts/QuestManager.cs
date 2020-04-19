@@ -13,6 +13,8 @@ public class QuestManager : MonoBehaviour
     public GameObject ParticleMarkerPrefab;
     private GameObject activeMarker;
 
+    public NotificationSequence sequenceManager;
+
     private void Start()
     {
         foreach (DeliveryMission mission in AllMissions)
@@ -24,6 +26,9 @@ public class QuestManager : MonoBehaviour
 
         MarkerReference.Value = CurrentMission.ObjectiveMarkerLocation;
         SpawnMarkerAtVec3(CurrentMission.ObjectiveMarkerLocation);
+
+        sequenceManager.AllNotificationsInSequence = CurrentMission.Notifications;
+        sequenceManager.StartNotificationSequence();
     }
 
     public void NextMission()
@@ -31,6 +36,9 @@ public class QuestManager : MonoBehaviour
         CurrentMission = AllMissions[AllMissions.IndexOf(CurrentMission) + 1];
         MarkerReference.Value = CurrentMission.ObjectiveMarkerLocation;
         SpawnMarkerAtVec3(CurrentMission.ObjectiveMarkerLocation);
+
+        sequenceManager.AllNotificationsInSequence = CurrentMission.Notifications;
+        sequenceManager.StartNotificationSequence();
     }
 
     public void SpawnMarkerAtVec3(Vector3 pos)

@@ -7,7 +7,7 @@ public class DestroyAfterDelay : MonoBehaviour
     public float Delay;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(DelayedDestroy());
     }
@@ -18,9 +18,9 @@ public class DestroyAfterDelay : MonoBehaviour
         //Destroy(this.gameObject);
         this.gameObject.SetActive(false);
 
-        if(GetComponent<ExplodeOnCollision>() != false)
-        {
-            GetComponent<ExplodeOnCollision>().ExplodeCar();
-        }
+        //if(GetComponent<ExplodeOnCollision>() != false)
+        //{
+            //GetComponent<ExplodeOnCollision>().ExplodeCar();
+        //}
     }
 }

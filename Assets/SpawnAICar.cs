@@ -11,15 +11,60 @@ public class SpawnAICar : MonoBehaviour
     public float MaxSpawnDelay;
 
     public GameObject[] AICarPrefabs;
+    public Transform[] SpawnLocations;
+
+    private int minSpawnedPerCycle = 1;
+    private int maxSpawnedPerCycle = 1;
+    private float minCycleSpawnDelay = 0.1f;
+    private float maxCycleSpawnDelay = 0.35f;
+
+    private float timer = 0f;
+    private float spawnDelay = 0f;
 
     void Start()
     {
-        StartCoroutine(SpawnCarsInterval());
+        //StartCoroutine(SpawnCarsInterval());
     }
 
-    void Update()
+    private void Update()
     {
-        
+        timer += Time.deltaTime;
+
+        if(timer >= spawnDelay)
+        {
+            SpawnCars();
+        }
+    }
+
+    private void SpawnCars()
+    {
+        timer = 0f;
+        spawnDelay = Random.Range(MinSpawnDelay, MaxSpawnDelay);
+
+        for (int i = 0; i < SpawnLocations.Length; i++)
+        {
+            GameObject AiCar = AICarPooler.Instance.GetAvailableAiCar();
+
+            if (AiCar != null)
+            {
+                Vector3 spawnPos = SpawnLocations[i].position;
+                Quaternion spawnRot = SpawnLocations[i].rotation;
+
+                Rigidbody rb = AiCar.GetComponent<Rigidbody>();
+
+                rb.velocity = Vector3.zero;
+
+                AiCar.SetActive(true);
+
+                rb.transform.position = spawnPos;
+                rb.transform.rotation = spawnRot;
+
+                AiCar.GetComponent<AICar>().speed = Random.Range(MinSpeed, MaxSpeed);
+                AiCar.GetComponent<RandomizeCarPaintColor>().RandomizePaintColor();
+                AiCar.GetComponent<AICar>().ActivateAI();
+                AiCar.GetComponent<ExplodeOnCollision>().hasExploded = false;
+            }
+        }
     }
 
     private IEnumerator SpawnCarsInterval()
@@ -29,19 +74,30 @@ public class SpawnAICar : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(MinSpawnDelay, MaxSpawnDelay));
             //GameObject AICar = Instantiate(AICarPrefabs[Random.Range(0, AICarPrefabs.Length)], transform.position, transform.rotation);
             //AICar.GetComponent<AICar>().speed = Random.Range(MinSpeed, MaxSpeed);
-            GameObject AiCar = AICarPooler.Instance.GetAvailableAiCar();
-            if(AiCar != null)
+
+            for (int i = 0; i < SpawnLocations.Length; i++)
             {
-                Rigidbody rb = AiCar.GetComponent<Rigidbody>();
-                rb.velocity = Vector3.zero;
-                AiCar.SetActive(true);
-                rb.MovePosition(this.transform.position);
-                rb.MoveRotation(this.transform.rotation);
-                //AiCar.transform.position = this.transform.position;
-                //AiCar.transform.rotation = this.transform.rotation;
-                AiCar.GetComponent<AICar>().speed = Random.Range(MinSpeed, MaxSpeed);
-                AiCar.GetComponent<RandomizeCarPaintColor>().RandomizePaintColor();
-                AiCar.GetComponent<AICar>().ActivateAI();
+                GameObject AiCar = AICarPooler.Instance.GetAvailableAiCar();
+
+                if (AiCar != null)
+                {
+                    Vector3 spawnPos = SpawnLocations[i].position;
+                    Quaternion spawnRot = SpawnLocations[i].rotation;
+
+                    Rigidbody rb = AiCar.GetComponent<Rigidbody>();
+
+                    rb.velocity = Vector3.zero;
+
+                    AiCar.SetActive(true);
+
+                    rb.MovePosition(spawnPos);
+                    rb.MoveRotation(spawnRot);
+
+                    AiCar.GetComponent<AICar>().speed = Random.Range(MinSpeed, MaxSpeed);
+                    AiCar.GetComponent<RandomizeCarPaintColor>().RandomizePaintColor();
+                    AiCar.GetComponent<AICar>().ActivateAI();
+                    AiCar.GetComponent<ExplodeOnCollision>().hasExploded = false;
+                }
             }
         }
     }

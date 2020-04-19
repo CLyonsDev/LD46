@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888b219757fce514088e0246a2d940f9, type: 3}
+  m_Name: Residence_02_DRBADD
+  m_EditorClassIdentifier: 
+  IsInDeliveryZone: 0
+  IsComplete: 0
+  InitialValue: 0
+  ObjectiveMarkerLocation: {x: 93.53, y: 0, z: -103.49}
+  ReturnLocation: {x: -20.25, y: 0, z: -5.75}
+  MissionAcquiredClip: {fileID: 0}
+  InZoneClip: {fileID: 8300000, guid: 4bc818e23c07e0547bb3d300e533c197, type: 3}
+  PizzaDeliveredClip: {fileID: 8300000, guid: 966c51e72c9a25d438e014a0909d9da3, type: 3}
+  Notifications: []

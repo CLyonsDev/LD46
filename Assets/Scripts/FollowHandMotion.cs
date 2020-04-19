@@ -21,7 +21,7 @@ public class FollowHandMotion : MonoBehaviour
         ScreenOrigin.y = Screen.height / 2;
     }
 
-    void LateUpdate()
+    void Update()
     {
         Vector3 handPoint = Camera.main.WorldToScreenPoint(Hand.position);
         handPoint.z = this.transform.position.z;

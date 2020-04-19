@@ -7,6 +7,9 @@ public class HandMovement : MonoBehaviour
     [SerializeField]
     private float HandLerpSpeed = 3f;
 
+    [SerializeField]
+    private float Sensitivity = 2f;
+
     public Vector2 HorizontalOffsetClamp;
     public Vector2 VerticalOffsetClamp;
     public Vector2 ForwardBackClamp;
@@ -62,6 +65,10 @@ public class HandMovement : MonoBehaviour
             logic.Squeeze();
         }
 
+    }
+
+    private void FixedUpdate()
+    {
         HandMoveLogic();
     }
 
@@ -82,17 +89,19 @@ public class HandMovement : MonoBehaviour
 
         //rb.MovePosition(rb.position + direction * HandLerpSpeed * Time.fixedDeltaTime);
         //rb.transform.Translate(direction * HandLerpSpeed * Time.fixedDeltaTime, Space.Self);
-        Vector3 right = transform.InverseTransformDirection(transform.right * direction.x);
-        Vector3 forward = transform.InverseTransformDirection(transform.forward * direction.z);
-        Vector3 up = transform.InverseTransformDirection(transform.up * direction.y);
+
+        /*
+        Vector3 right = cam.transform.InverseTransformDirection(cam.transform.right * direction.x);
+        Vector3 forward = cam.transform.InverseTransformDirection(cam.transform.forward * direction.z);
+        Vector3 up = cam.transform.InverseTransformDirection(cam.transform.up * direction.y);
 
         Vector3 finalDest = transform.localPosition + (right + forward + up);
 
         //Debug.Log(Vector3.Distance(transform.localPosition + finalDest, cam.transform.localPosition));
 
-        if(Vector3.Distance(transform.localPosition + finalDest, cam.transform.localPosition) >= MinDistanceToCamera)
+        if(Vector3.Distance(transform.localPosition + finalDest, cam.transform.position) >= MinDistanceToCamera)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, finalDest, HandLerpSpeed * Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, finalDest, HandLerpSpeed * Time.fixedDeltaTime);
 
             //TODO: REWRITE
             transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, HorizontalOffsetClamp.x, HorizontalOffsetClamp.y),
@@ -100,5 +109,19 @@ public class HandMovement : MonoBehaviour
                 Mathf.Clamp(transform.localPosition.z, ForwardBackClamp.x, ForwardBackClamp.y)
                 );
         }
+        */
+
+        Vector3 right = transform.right * direction.x * Sensitivity;
+        Vector3 forward = transform.forward * direction.z * Sensitivity;
+        Vector3 up = transform.up * direction.y * Sensitivity;
+
+        Vector3 final = right + forward + up;
+
+        transform.position = Vector3.Lerp(transform.position, (transform.position + final), HandLerpSpeed * Time.fixedDeltaTime);
+
+        transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, HorizontalOffsetClamp.x, HorizontalOffsetClamp.y),
+                Mathf.Clamp(transform.localPosition.y, VerticalOffsetClamp.x, VerticalOffsetClamp.y),
+                Mathf.Clamp(transform.localPosition.z, ForwardBackClamp.x, ForwardBackClamp.y)
+                );
     }
 }
