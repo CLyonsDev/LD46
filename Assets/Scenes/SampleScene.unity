@@ -27675,7 +27675,12 @@ PrefabInstance:
     - target: {fileID: 372090708384550908, guid: ffe1676a3263c7848855583d253309bd,
         type: 3}
       propertyPath: HandLerpSpeed
-      value: 0.1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 372090708384550908, guid: ffe1676a3263c7848855583d253309bd,
+        type: 3}
+      propertyPath: Sensitivity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 372090709031013130, guid: ffe1676a3263c7848855583d253309bd,
         type: 3}
