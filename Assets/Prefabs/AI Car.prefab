@@ -456,6 +456,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b70b4616d8a251747a0f6fdcf9fb6a40, type: 3}
   - {fileID: 8300000, guid: 3f286ff2614881742b729ab9101af396, type: 3}
   - {fileID: 8300000, guid: c87e39b75a63eee40891100bcb1cf58e, type: 3}
+  ExplosionParticleEffect: {fileID: 4122029447696504025, guid: 346e1511bd030ee46b2f7b77bb0c617c,
+    type: 3}
 --- !u!82 &5632123588884138962
 AudioSource:
   m_ObjectHideFlags: 0

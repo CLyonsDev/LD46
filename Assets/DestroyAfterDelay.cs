@@ -17,5 +17,10 @@ public class DestroyAfterDelay : MonoBehaviour
         yield return new WaitForSeconds(Delay);
         //Destroy(this.gameObject);
         this.gameObject.SetActive(false);
+
+        if(GetComponent<ExplodeOnCollision>() != false)
+        {
+            GetComponent<ExplodeOnCollision>().ExplodeCar();
+        }
     }
 }

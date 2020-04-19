@@ -8,6 +8,7 @@ public class ExplodeOnCollision : MonoBehaviour
 
     public AudioClip[] explosionClips;
     private AudioSource source;
+    public GameObject ExplosionParticleEffect;
 
     private void Awake()
     {
@@ -23,10 +24,11 @@ public class ExplodeOnCollision : MonoBehaviour
         }
     }
 
-    private void ExplodeCar()
+    public void ExplodeCar()
     {
         source.pitch = Random.Range(0.65f, 1f);
         source.PlayOneShot(explosionClips[Random.Range(0, explosionClips.Length)], 0.25f);
         GetComponent<AICar>().DeactivateAI();
+        Instantiate(ExplosionParticleEffect, transform.position, Quaternion.identity);
     }
 }
