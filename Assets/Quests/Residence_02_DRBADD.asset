@@ -17,7 +17,7 @@ MonoBehaviour:
   InitialValue: 0
   ObjectiveMarkerLocation: {x: 93.53, y: 0, z: -103.49}
   ReturnLocation: {x: -20.25, y: 0, z: -5.75}
-  MissionAcquiredClip: {fileID: 0}
+  MissionAcquiredClip: {fileID: 8300000, guid: a968b0dd1e4078141ad5614c87877707, type: 3}
   InZoneClip: {fileID: 8300000, guid: 4bc818e23c07e0547bb3d300e533c197, type: 3}
   PizzaDeliveredClip: {fileID: 8300000, guid: 966c51e72c9a25d438e014a0909d9da3, type: 3}
   Notifications: []

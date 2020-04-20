@@ -32,6 +32,7 @@ public class DeliveryMission : ScriptableObject
     public void CompleteQuest()
     {
         IsComplete = true;
-        AudioSource.PlayClipAtPoint(PizzaDeliveredClip, ObjectiveMarkerLocation, 2.5f);
+        if(PizzaDeliveredClip != null)
+            AudioSource.PlayClipAtPoint(PizzaDeliveredClip, ObjectiveMarkerLocation, 2.5f);
     }
 }

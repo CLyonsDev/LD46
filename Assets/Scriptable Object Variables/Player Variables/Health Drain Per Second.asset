@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7091bcb8551924aad862f8f58e8322, type: 3}
   m_Name: Health Drain Per Second
   m_EditorClassIdentifier: 
-  Value: 2.5
+  Value: 1.5
   Description: The natural drain rate of the heart's health.

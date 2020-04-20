@@ -1,30 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ResetCar : MonoBehaviour
 {
-    private Rigidbody rb;
-
-    public float RaiseDistance = 1.5f;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    private void Start()
-    {
-        Debug.LogError("ResetCar should teleport the player back to the pizza shop parking lot (with all car decorations too)");
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.H))
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.y, 0));
-            rb.MovePosition(rb.position + (Vector3.up * RaiseDistance));
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7091bcb8551924aad862f8f58e8322, type: 3}
   m_Name: Heart Current Health
   m_EditorClassIdentifier: 
-  Value: 0
+  Value: -31.675667
   Description: How much health the heart currently has.

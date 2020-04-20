@@ -15,6 +15,13 @@ public class HeartHealth : MonoBehaviour
 
     public bool IsDead = false;
 
+    public AudioSource HeartAlertSource;
+    public AudioClip HealthRestoreSound;
+
+    public TooltipManager manager;
+
+    private bool hasRemindedPlayer = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +39,7 @@ public class HeartHealth : MonoBehaviour
         }else if(HeartCurrentHealth.Value > HealthCriticalThreshold && HealthCriticalWarning == true)
         {
             HealthCriticalWarning = false;
+            StopRemindingPlayer();
         }
 
         if (HeartCurrentHealth.Value <= 0 && !IsDead)
@@ -51,6 +59,7 @@ public class HeartHealth : MonoBehaviour
     public void AddHealth(float amount)
     {
         HeartCurrentHealth.Value += amount;
+        HeartAlertSource.PlayOneShot(HealthRestoreSound, 0.5f);
         if(HeartCurrentHealth.Value >= MaxHealth)
         {
             HeartCurrentHealth.Value = MaxHealth;
@@ -60,5 +69,21 @@ public class HeartHealth : MonoBehaviour
     private void RemindPlayerToSqueezeHeart()
     {
         Debug.LogWarning("Health critical! Squeeze heart!");
+        HeartAlertSource.Play();
+
+        if(!hasRemindedPlayer)
+        {
+            hasRemindedPlayer = true;
+            Debug.Log("Remind Player!");
+            manager.CreateTooltip("The heart's condition is critical! Grab it and repeatedly press 'E' to pump it!", 7f);
+        }
+    }
+
+    private void StopRemindingPlayer()
+    {
+        if (hasRemindedPlayer)
+            hasRemindedPlayer = false;
+
+        HeartAlertSource.Stop();
     }
 }

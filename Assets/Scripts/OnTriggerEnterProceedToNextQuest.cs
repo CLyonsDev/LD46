@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class OnTriggerEnterProceedToNextQuest : MonoBehaviour
 {
+    public AudioClip CompleteClip;
+    public AudioSource PlayerSource;
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(other.transform.name);
-        if (other.transform.root.GetComponent<QuestManager>().CurrentMission.IsComplete)
+        if(other.transform.root.GetComponent<QuestManager>() != null)
         {
-            other.GetComponentInParent<QuestManager>().NextMission();
-            Debug.Log("Good job! Next delivery.");
+            if (other.transform.root.GetComponent<QuestManager>().CurrentMission.IsComplete)
+            {
+                other.GetComponentInParent<QuestManager>().NextMission();
+                Debug.Log("Good job! Next delivery.");
+                PlayerSource.PlayOneShot(CompleteClip, 0.5f);
+            }
         }
     }
 }

@@ -60,6 +60,7 @@ public class ObjectGrabLogic : MonoBehaviour
             grabbedObject.GetComponent<PhysicsObject>().Detatch();
             rb.AddForce(-vel.vel * 1.5f, ForceMode.Impulse);
             grabbedObject = null;
+            pickupCandidate = null;
         }
     }
 
