@@ -22,3 +22,5 @@ MonoBehaviour:
   PizzaDeliveredClip: {fileID: 0}
   Notifications:
   - {fileID: 11400000, guid: 764c9d1caf414e5428901608d4de8f2e, type: 2}
+  EventToRaiseOnCompletion: {fileID: 11400000, guid: af8f4d2d273c19946b3557fa12ee7af3,
+    type: 2}

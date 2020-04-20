@@ -34,7 +34,6 @@ public class PedestrianPooler : MonoBehaviour
                 return PooledPedestrians[i];
             }
         }
-
         return null;
     }
 }

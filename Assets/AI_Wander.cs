@@ -7,7 +7,7 @@ public class AI_Wander : MonoBehaviour
 {
     private NavMeshAgent agent;
 
-    private float radius = 100;
+    private float radius = 200;
     private Vector3 target;
 
     public LayerMask mask;

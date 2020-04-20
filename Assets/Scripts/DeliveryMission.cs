@@ -18,6 +18,8 @@ public class DeliveryMission : ScriptableObject
 
     public NotificationObject[] Notifications;
 
+    public GameEvent EventToRaiseOnCompletion;
+
     public void Init()
     {
         IsComplete = InitialValue;
@@ -34,5 +36,9 @@ public class DeliveryMission : ScriptableObject
         IsComplete = true;
         if(PizzaDeliveredClip != null)
             AudioSource.PlayClipAtPoint(PizzaDeliveredClip, ObjectiveMarkerLocation, 2.5f);
+        if(EventToRaiseOnCompletion != null)
+        {
+            EventToRaiseOnCompletion.Raise();
+        }
     }
 }

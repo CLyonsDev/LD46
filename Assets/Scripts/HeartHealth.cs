@@ -20,6 +20,8 @@ public class HeartHealth : MonoBehaviour
 
     public TooltipManager manager;
 
+    public GameEvent GameOverEvent;
+
     private bool hasRemindedPlayer = false;
 
     // Start is called before the first frame update
@@ -48,6 +50,7 @@ public class HeartHealth : MonoBehaviour
             IsDead = true;
             // GAME OVER. DO GAMEOVER STUFF HERE.
             Debug.Log("Heart has died! Game over!");
+            GameOverEvent.Raise();
         }
     }
 

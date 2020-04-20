@@ -48,6 +48,6 @@ public class QuestManager : MonoBehaviour
             Destroy(activeMarker.gameObject);
         }
 
-        activeMarker = (GameObject)Instantiate(ParticleMarkerPrefab, CurrentMission.ObjectiveMarkerLocation, Quaternion.identity);
+        //activeMarker = (GameObject)Instantiate(ParticleMarkerPrefab, CurrentMission.ObjectiveMarkerLocation, Quaternion.identity);
     }
 }

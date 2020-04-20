@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class SpawnPedestrian : MonoBehaviour
 {
+    [SerializeField]
     private float timer = 0f;
     private float spawnDelay = 0f;
 
@@ -14,6 +15,10 @@ public class SpawnPedestrian : MonoBehaviour
     public GameObject[] PedestrianPrefabs;
     public Transform[] SpawnLocations;
 
+    private void Start()
+    {
+        timer = spawnDelay;
+    }
 
     // Update is called once per frame
     void Update()
@@ -39,14 +44,14 @@ public class SpawnPedestrian : MonoBehaviour
                 Vector3 spawnPos = SpawnLocations[i].position;
                 Quaternion spawnRot = SpawnLocations[i].rotation;
 
+                Pedestrian.SetActive(true);
+
                 Rigidbody rb = Pedestrian.GetComponent<Rigidbody>();
 
                 rb.velocity = Vector3.zero;
 
                 Pedestrian.transform.position = spawnPos;
                 Pedestrian.transform.rotation = spawnRot;
-
-                Pedestrian.SetActive(true);
             }
         }
     }
