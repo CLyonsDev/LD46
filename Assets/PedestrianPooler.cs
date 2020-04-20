@@ -8,7 +8,7 @@ public class PedestrianPooler : MonoBehaviour
 
     public List<GameObject> PooledPedestrians = new List<GameObject>();
     public GameObject PedestrianPrefab;
-    public int maxAiCars;
+    public int maxPedestrians;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class PedestrianPooler : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < maxAiCars; i++)
+        for (int i = 0; i < maxPedestrians; i++)
         {
             GameObject ai = (GameObject)Instantiate(PedestrianPrefab);
             ai.SetActive(false);

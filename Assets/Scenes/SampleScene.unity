@@ -3084,7 +3084,7 @@ MonoBehaviour:
   PooledPedestrians: []
   PedestrianPrefab: {fileID: 6885696903347278781, guid: d0ec262a6dae11342b5b71a266591b78,
     type: 3}
-  maxAiCars: 250
+  maxPedestrians: 25
 --- !u!114 &227256160
 MonoBehaviour:
   m_ObjectHideFlags: 0

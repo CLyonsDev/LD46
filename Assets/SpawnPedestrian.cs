@@ -46,12 +46,15 @@ public class SpawnPedestrian : MonoBehaviour
 
                 Pedestrian.SetActive(true);
 
+
                 Rigidbody rb = Pedestrian.GetComponent<Rigidbody>();
 
                 rb.velocity = Vector3.zero;
 
                 Pedestrian.transform.position = spawnPos;
                 Pedestrian.transform.rotation = spawnRot;
+
+                Pedestrian.GetComponent<RagdollOnCollision>().Respawn();
             }
         }
     }
